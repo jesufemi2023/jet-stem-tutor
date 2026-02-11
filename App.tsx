@@ -8,6 +8,7 @@ import ConsultationForm from './components/ConsultationForm.tsx';
 import RegistrationForm from './components/RegistrationForm.tsx';
 import TeacherProfiles from './components/TeacherProfiles.tsx';
 import SuccessStories from './components/SuccessStories.tsx';
+import SuccessStoriesSlider from './components/SuccessStoriesSlider.tsx';
 import BookingCalendar from './components/BookingCalendar.tsx';
 
 type Page = 'home' | 'consult' | 'stories' | 'booking' | 'register';
@@ -82,6 +83,8 @@ function App() {
             <Features />
 
             <TeacherProfiles />
+
+            <SuccessStoriesSlider onViewAll={() => setCurrentPage('stories')} />
 
             {/* CTA Section */}
             <section className="py-24 px-4 sm:px-6">
