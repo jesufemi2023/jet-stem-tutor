@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 interface NavbarProps {
-  onNavigate: (page: 'home' | 'dashboard' | 'consult' | 'booking' | 'stories' | 'register') => void;
+  onNavigate: (page: 'home' | 'consult' | 'booking' | 'stories' | 'register') => void;
   currentPage: string;
 }
 
@@ -11,13 +11,27 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const handleLinkClick = (page: 'home' | 'dashboard' | 'consult' | 'booking' | 'stories' | 'register' | string) => {
+  const handleLinkClick = (pageOrId: 'home' | 'consult' | 'booking' | 'stories' | 'register' | string) => {
     setIsMenuOpen(false);
-    if (['home', 'dashboard', 'consult', 'booking', 'stories', 'register'].includes(page)) {
-      onNavigate(page as any);
+    
+    const pages = ['home', 'consult', 'booking', 'stories', 'register'];
+    
+    if (pages.includes(pageOrId)) {
+      onNavigate(pageOrId as any);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      const el = document.getElementById(page);
-      el?.scrollIntoView({ behavior: 'smooth' });
+      // It's an anchor link (like 'values' or 'programs')
+      if (currentPage !== 'home') {
+        onNavigate('home');
+        // Small timeout to allow Home to render before scrolling
+        setTimeout(() => {
+          const el = document.getElementById(pageOrId);
+          el?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        const el = document.getElementById(pageOrId);
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -47,6 +61,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             Home
           </button>
           <button 
+            onClick={() => handleLinkClick('values')}
+            className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition"
+          >
+            Our Values
+          </button>
+          <button 
             className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition"
             onClick={() => handleLinkClick('stories')}
           >
@@ -57,12 +77,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             onClick={() => handleLinkClick('teachers')}
           >
             Teachers
-          </button>
-          <button 
-            onClick={() => handleLinkClick('dashboard')}
-            className={`text-sm font-medium transition ${currentPage === 'dashboard' ? 'text-indigo-600' : 'text-gray-600 hover:text-indigo-600'}`}
-          >
-            Parent Login
           </button>
         </div>
 
@@ -102,8 +116,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl animate-in slide-in-from-top duration-300">
           <div className="flex flex-col p-6 space-y-4">
             <button onClick={() => handleLinkClick('home')} className="text-left py-2 font-semibold text-gray-700">Home</button>
+            <button onClick={() => handleLinkClick('values')} className="text-left py-2 font-semibold text-gray-700">Our Values</button>
             <button onClick={() => handleLinkClick('stories')} className="text-left py-2 font-semibold text-gray-700">Success Stories</button>
-            <button onClick={() => handleLinkClick('dashboard')} className="text-left py-2 font-semibold text-gray-700">Parent Login</button>
             <button onClick={() => handleLinkClick('booking')} className="w-full border border-indigo-100 text-indigo-600 py-4 rounded-xl font-bold text-center">Book a Call</button>
             <button 
               onClick={() => handleLinkClick('register')}

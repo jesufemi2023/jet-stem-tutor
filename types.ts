@@ -20,6 +20,7 @@ export interface Student {
   id: string;
   name: string;
   grade: GradeLevel;
+  schoolName: string;
   strugglingSubjects: Subject[];
 }
 
@@ -27,14 +28,17 @@ export interface ConsultationRequest {
   parentName: string;
   email: string;
   studentName: string;
+  schoolName: string;
   subject: Subject;
   description: string;
+  location: string;
 }
 
 export interface TutoringPlan {
   summary: string;
   recommendations: string[];
   estimatedDuration: string;
+  monthlyFee: string;
 }
 
 export interface BookingSlot {

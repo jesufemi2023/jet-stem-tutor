@@ -10,7 +10,9 @@ const ConsultationForm: React.FC = () => {
     parentName: '',
     email: '',
     studentName: '',
+    schoolName: '',
     subject: Subject.MATHS,
+    location: '',
     description: ''
   });
 
@@ -38,7 +40,7 @@ const ConsultationForm: React.FC = () => {
           </div>
           <div>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 leading-tight">Expert Plan Ready</h2>
-            <p className="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Prepared for {formData.studentName}</p>
+            <p className="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Prepared for {formData.studentName} • {formData.schoolName}</p>
           </div>
         </div>
         
@@ -48,28 +50,35 @@ const ConsultationForm: React.FC = () => {
             <p className="text-gray-700 leading-relaxed font-medium text-lg italic">"{plan.summary}"</p>
           </div>
 
-          <div>
-            <h3 className="text-xs font-black text-indigo-600 uppercase tracking-[0.2em] mb-6">Focus Roadmap</h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {plan.recommendations.map((rec, i) => (
-                <li key={i} className="flex items-start p-4 bg-white rounded-2xl border border-gray-100 shadow-sm text-gray-700 font-semibold">
-                  <span className="mr-3 text-indigo-500">◈</span>
-                  <span className="text-sm">{rec}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xs font-black text-indigo-600 uppercase tracking-[0.2em] mb-6">Focus Roadmap</h3>
+              <ul className="space-y-3">
+                {plan.recommendations.map((rec, i) => (
+                  <li key={i} className="flex items-start p-4 bg-white rounded-2xl border border-gray-100 shadow-sm text-gray-700 font-semibold">
+                    <span className="mr-3 text-indigo-500">◈</span>
+                    <span className="text-xs">{rec}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-indigo-50 p-8 rounded-[2rem] border border-indigo-100 flex flex-col justify-center">
+               <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-2">Monthly Investment</p>
+               <p className="text-3xl font-black text-indigo-900">{plan.monthlyFee}</p>
+               <p className="text-[10px] text-indigo-400 font-bold uppercase mt-4">Pre-payment required for teacher assignment.</p>
+            </div>
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-between p-6 bg-indigo-600 rounded-3xl text-white gap-6">
             <div>
-              <p className="text-xs font-black uppercase tracking-widest opacity-70 mb-1">Recommended Commitment</p>
+              <p className="text-xs font-black uppercase tracking-widest opacity-70 mb-1">Standard Schedule</p>
               <p className="text-xl font-black">{plan.estimatedDuration}</p>
             </div>
             <button 
               className="w-full sm:w-auto px-8 py-4 bg-white text-indigo-600 rounded-2xl font-black shadow-lg hover:bg-gray-50 transition"
-              onClick={() => alert("Registration confirmed! Our academic counselor will call you within 24 hours.")}
+              onClick={() => alert("Registration confirmed! Redirecting to secure payment portal...")}
             >
-              Confirm & Book Intro
+              Proceed to Enrollment
             </button>
           </div>
         </div>
@@ -87,8 +96,11 @@ const ConsultationForm: React.FC = () => {
   return (
     <div className="bg-white p-6 sm:p-12 rounded-[2.5rem] shadow-xl border border-gray-50 max-w-3xl mx-auto">
       <div className="text-center mb-12">
+        <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-inner">
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+        </div>
         <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-4 tracking-tight">Consult an Educator</h2>
-        <p className="text-gray-500 font-medium text-lg">Help us understand your child's needs. We'll generate a custom roadmap instantly.</p>
+        <p className="text-gray-500 font-medium text-lg">Classes via Google Meet, 2x per week. Monthly tuition starts at $120.</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-8">
@@ -130,6 +142,31 @@ const ConsultationForm: React.FC = () => {
             />
           </div>
           <div className="space-y-2">
+            <label className="text-[10px] font-black text-indigo-600 uppercase tracking-widest ml-1">Current School</label>
+            <input 
+              required
+              type="text" 
+              className="w-full px-6 py-4 rounded-2xl border border-gray-100 bg-gray-50/50 focus:bg-white focus:ring-4 focus:ring-indigo-50 outline-none transition font-semibold"
+              placeholder="School Name"
+              value={formData.schoolName}
+              onChange={(e) => setFormData({...formData, schoolName: e.target.value})}
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-2">
+            <label className="text-[10px] font-black text-indigo-600 uppercase tracking-widest ml-1">Country or Continent</label>
+            <input 
+              required
+              type="text" 
+              className="w-full px-6 py-4 rounded-2xl border border-gray-100 bg-gray-50/50 focus:bg-white focus:ring-4 focus:ring-indigo-50 outline-none transition font-semibold"
+              placeholder="e.g. Nigeria, USA, Europe"
+              value={formData.location}
+              onChange={(e) => setFormData({...formData, location: e.target.value})}
+            />
+          </div>
+          <div className="space-y-2">
             <label className="text-[10px] font-black text-indigo-600 uppercase tracking-widest ml-1">Core Subject</label>
             <select 
               className="w-full px-6 py-4 rounded-2xl border border-gray-100 bg-gray-50/50 focus:bg-white focus:ring-4 focus:ring-indigo-50 outline-none transition font-semibold appearance-none cursor-pointer"
@@ -162,14 +199,14 @@ const ConsultationForm: React.FC = () => {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              <span>Analyzing Profiles...</span>
+              <span>Analyzing Region & Profiles...</span>
             </>
           ) : (
-            <span>Generate Custom Study Plan</span>
+            <span>Generate Geo-Aligned Study Plan</span>
           )}
         </button>
         <p className="text-center text-gray-400 text-[10px] font-black uppercase tracking-widest">
-          No obligation • AI-Powered Consultation • Verified Educators
+          Geographically Relevant • AI-Powered Consultation • Verified Educators
         </p>
       </form>
     </div>

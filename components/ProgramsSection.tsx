@@ -36,18 +36,18 @@ const subjects = [
 const specializedPrograms = [
   {
     title: "Lesson Tutorials",
-    subtitle: "Daily/Weekly Support",
-    desc: "Reinforcing what was taught at school today. We help solve assignments, projects, and clarify difficult school topics."
+    subtitle: "2x Week • 1hr Sessions",
+    desc: "Reinforcing school work via Google Meet. Grouped by same school, country, and grade (Max 5 students)."
   },
   {
-    title: "Holiday Coaching",
-    subtitle: "Intensive Revision",
-    desc: "Keep the momentum going during breaks. We review the past term and prepare students for the one ahead."
+    title: "Monthly Tuition",
+    subtitle: "Starting at $120/Subj",
+    desc: "Investment in excellence. Monthly payments are made upfront before teacher assignment and class commencement."
   },
   {
     title: "Foundation Building",
-    subtitle: "Bridging the Gap",
-    desc: "Specifically for students with foundational problems. We go back to basics to ensure future success in STEM."
+    subtitle: "1-on-1 Available",
+    desc: "Bridging foundational gaps with personalized attention. Fees are subject to review based on student challenges."
   }
 ];
 
@@ -62,11 +62,11 @@ const ProgramsSection: React.FC = () => {
               Specialized <span className="text-indigo-600 underline decoration-indigo-100 underline-offset-8">STEM Subjects</span>
             </h3>
             <p className="mt-6 text-lg text-gray-500 font-medium">
-              We don't teach a different curriculum; we master the one your child is currently learning at school.
+              Reinforcing school tutorials via Google Meet. Classes are held twice a week (1 hour each) with peers from your same country and grade level.
             </p>
           </div>
           <div className="hidden md:flex space-x-4">
-            <div className="px-6 py-3 bg-gray-50 rounded-2xl border border-gray-100 text-sm font-bold text-gray-400">Grade 7 - 12</div>
+            <div className="px-6 py-3 bg-gray-50 rounded-2xl border border-gray-100 text-sm font-bold text-gray-400">Monthly Billing: Min $120/Subject</div>
           </div>
         </div>
 
@@ -99,8 +99,8 @@ const ProgramsSection: React.FC = () => {
         {/* Specialized Modes */}
         <div className="bg-gray-50 rounded-[3.5rem] p-10 sm:p-16 border border-gray-100">
           <div className="text-center mb-16">
-            <h3 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4">Flexible Tutoring Modes</h3>
-            <p className="text-gray-500 font-medium">Tailored support depending on your child's current academic state.</p>
+            <h3 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4">Logistics & Enrollment</h3>
+            <p className="text-gray-500 font-medium">Transparent, professional, and goal-oriented structure.</p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">

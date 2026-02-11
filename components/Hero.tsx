@@ -2,6 +2,11 @@
 import React from 'react';
 
 const Hero: React.FC<{ onStart: () => void; onStories: () => void }> = ({ onStart, onStories }) => {
+  const scrollToValues = () => {
+    const el = document.getElementById('values');
+    el?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative pt-12 pb-20 sm:py-24 px-4 sm:px-6 overflow-hidden bg-white">
       {/* Background patterns */}
@@ -35,7 +40,18 @@ const Hero: React.FC<{ onStart: () => void; onStories: () => void }> = ({ onStar
               Our Success Stories
             </button>
           </div>
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-gray-500 font-semibold text-sm">
+          
+          <button 
+            onClick={scrollToValues}
+            className="group flex items-center justify-center lg:justify-start space-x-3 text-indigo-600 font-black text-xs uppercase tracking-widest hover:opacity-80 transition"
+          >
+            <span>Discover Our Values</span>
+            <svg className="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div className="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-gray-500 font-semibold text-sm">
             <div className="flex items-center space-x-2">
               <div className="p-1 bg-green-50 rounded-full text-green-600">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>

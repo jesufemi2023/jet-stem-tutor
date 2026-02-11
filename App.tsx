@@ -6,12 +6,11 @@ import Features from './components/Features.tsx';
 import ProgramsSection from './components/ProgramsSection.tsx';
 import ConsultationForm from './components/ConsultationForm.tsx';
 import RegistrationForm from './components/RegistrationForm.tsx';
-import ParentDashboard from './components/ParentDashboard.tsx';
 import TeacherProfiles from './components/TeacherProfiles.tsx';
 import SuccessStories from './components/SuccessStories.tsx';
 import BookingCalendar from './components/BookingCalendar.tsx';
 
-type Page = 'home' | 'dashboard' | 'consult' | 'stories' | 'booking' | 'register';
+type Page = 'home' | 'consult' | 'stories' | 'booking' | 'register';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -140,12 +139,6 @@ function App() {
             <BookingCalendar onBack={() => setCurrentPage('home')} />
           </div>
         );
-      case 'dashboard':
-        return (
-          <div className="bg-gray-50 min-h-screen animate-in fade-in duration-700">
-            <ParentDashboard />
-          </div>
-        );
       default:
         return null;
     }
@@ -186,7 +179,6 @@ function App() {
           <div>
             <h4 className="font-black text-gray-900 mb-8 uppercase text-xs tracking-widest">Connect</h4>
             <ul className="space-y-4 text-sm font-bold text-gray-500">
-              <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('dashboard')}>Parent Login</button></li>
               <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('stories')}>Success Stories</button></li>
               <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('booking')}>Book a Call</button></li>
               <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('consult')}>Get AI Plan</button></li>
