@@ -3,11 +3,15 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar.tsx';
 import Hero from './components/Hero.tsx';
 import Features from './components/Features.tsx';
+import ProgramsSection from './components/ProgramsSection.tsx';
 import ConsultationForm from './components/ConsultationForm.tsx';
+import RegistrationForm from './components/RegistrationForm.tsx';
 import ParentDashboard from './components/ParentDashboard.tsx';
 import TeacherProfiles from './components/TeacherProfiles.tsx';
+import SuccessStories from './components/SuccessStories.tsx';
+import BookingCalendar from './components/BookingCalendar.tsx';
 
-type Page = 'home' | 'dashboard' | 'consult';
+type Page = 'home' | 'dashboard' | 'consult' | 'stories' | 'booking' | 'register';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -17,8 +21,27 @@ function App() {
       case 'home':
         return (
           <div className="animate-in fade-in duration-1000">
-            <Hero onStart={() => setCurrentPage('consult')} />
+            <Hero 
+              onStart={() => setCurrentPage('consult')} 
+              onStories={() => setCurrentPage('stories')}
+            />
             
+            {/* Direct Booking Invitation */}
+            <section className="py-12 bg-indigo-50/50 border-y border-indigo-100">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div>
+                  <h3 className="text-xl font-black text-gray-900 tracking-tight">Prefer a direct conversation?</h3>
+                  <p className="text-gray-500 font-medium">Speak with our academic director to discuss your child's specific needs.</p>
+                </div>
+                <button 
+                  onClick={() => setCurrentPage('booking')}
+                  className="px-8 py-4 bg-white border border-indigo-200 text-indigo-600 rounded-2xl font-black hover:bg-indigo-600 hover:text-white transition shadow-sm"
+                >
+                  Book a Direct Call
+                </button>
+              </div>
+            </section>
+
             {/* Mission Section */}
             <section className="py-24 bg-white px-4 sm:px-6">
               <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
@@ -55,6 +78,8 @@ function App() {
               </div>
             </section>
 
+            <ProgramsSection />
+
             <Features />
 
             <TeacherProfiles />
@@ -74,12 +99,15 @@ function App() {
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                     <button 
-                      onClick={() => setCurrentPage('consult')}
+                      onClick={() => setCurrentPage('register')}
                       className="w-full sm:w-auto px-12 py-5 bg-white text-indigo-600 rounded-2xl font-black text-lg hover:scale-105 transition shadow-2xl"
                     >
-                      Book Free Consultation
+                      Register Student
                     </button>
-                    <button className="text-indigo-50 font-black uppercase text-xs tracking-widest hover:text-white transition">
+                    <button 
+                      onClick={() => setCurrentPage('stories')}
+                      className="text-indigo-50 font-black uppercase text-xs tracking-widest hover:text-white transition"
+                    >
                       View Success Stories
                     </button>
                   </div>
@@ -88,10 +116,28 @@ function App() {
             </section>
           </div>
         );
+      case 'stories':
+        return (
+          <div className="bg-gray-50 min-h-screen animate-in fade-in duration-700">
+            <SuccessStories onBack={() => setCurrentPage('home')} />
+          </div>
+        );
       case 'consult':
         return (
           <div className="py-12 sm:py-20 px-4 sm:px-6 bg-gray-50 min-h-screen animate-in fade-in slide-in-from-bottom-8 duration-700">
             <ConsultationForm />
+          </div>
+        );
+      case 'register':
+        return (
+          <div className="py-12 sm:py-20 px-4 sm:px-6 bg-gray-50 min-h-screen animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <RegistrationForm onBack={() => setCurrentPage('home')} />
+          </div>
+        );
+      case 'booking':
+        return (
+          <div className="py-12 sm:py-20 px-4 sm:px-6 bg-gray-50 min-h-screen animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <BookingCalendar onBack={() => setCurrentPage('home')} />
           </div>
         );
       case 'dashboard':
@@ -131,19 +177,19 @@ function App() {
           <div>
             <h4 className="font-black text-gray-900 mb-8 uppercase text-xs tracking-widest">Learning</h4>
             <ul className="space-y-4 text-sm font-bold text-gray-500">
-              <li><button className="hover:text-indigo-600 transition">Mathematics</button></li>
-              <li><button className="hover:text-indigo-600 transition">Physics & Chemistry</button></li>
-              <li><button className="hover:text-indigo-600 transition">Coding & AI</button></li>
-              <li><button className="hover:text-indigo-600 transition">Foundation Builder</button></li>
+              <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('home')}>Mathematics</button></li>
+              <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('home')}>Physics & Chemistry</button></li>
+              <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('home')}>Coding & AI</button></li>
+              <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('home')}>Foundation Builder</button></li>
             </ul>
           </div>
           <div>
             <h4 className="font-black text-gray-900 mb-8 uppercase text-xs tracking-widest">Connect</h4>
             <ul className="space-y-4 text-sm font-bold text-gray-500">
-              <li><button className="hover:text-indigo-600 transition">Tutor Login</button></li>
-              <li><button className="hover:text-indigo-600 transition">Career Opportunities</button></li>
-              <li><button className="hover:text-indigo-600 transition">Community Impact</button></li>
-              <li><button className="hover:text-indigo-600 transition">Support Center</button></li>
+              <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('dashboard')}>Parent Login</button></li>
+              <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('stories')}>Success Stories</button></li>
+              <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('booking')}>Book a Call</button></li>
+              <li><button className="hover:text-indigo-600 transition" onClick={() => setCurrentPage('consult')}>Get AI Plan</button></li>
             </ul>
           </div>
         </div>

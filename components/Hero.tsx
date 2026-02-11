@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const Hero: React.FC<{ onStart: () => void }> = ({ onStart }) => {
+const Hero: React.FC<{ onStart: () => void; onStories: () => void }> = ({ onStart, onStories }) => {
   return (
     <section className="relative pt-12 pb-20 sm:py-24 px-4 sm:px-6 overflow-hidden bg-white">
       {/* Background patterns */}
@@ -28,8 +28,11 @@ const Hero: React.FC<{ onStart: () => void }> = ({ onStart }) => {
             >
               Start Free Consultation
             </button>
-            <button className="w-full sm:w-auto px-10 py-5 bg-white text-gray-700 border border-gray-200 rounded-2xl font-bold text-lg hover:bg-gray-50 transition">
-              Meet Our Tutors
+            <button 
+              onClick={onStories}
+              className="w-full sm:w-auto px-10 py-5 bg-white text-gray-700 border border-gray-200 rounded-2xl font-bold text-lg hover:bg-gray-50 transition"
+            >
+              Our Success Stories
             </button>
           </div>
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-gray-500 font-semibold text-sm">

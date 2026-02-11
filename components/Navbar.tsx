@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 interface NavbarProps {
-  onNavigate: (page: 'home' | 'dashboard' | 'consult') => void;
+  onNavigate: (page: 'home' | 'dashboard' | 'consult' | 'booking' | 'stories' | 'register') => void;
   currentPage: string;
 }
 
@@ -11,9 +11,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const handleLinkClick = (page: 'home' | 'dashboard' | 'consult' | string) => {
+  const handleLinkClick = (page: 'home' | 'dashboard' | 'consult' | 'booking' | 'stories' | 'register' | string) => {
     setIsMenuOpen(false);
-    if (page === 'home' || page === 'dashboard' || page === 'consult') {
+    if (['home', 'dashboard', 'consult', 'booking', 'stories', 'register'].includes(page)) {
       onNavigate(page as any);
     } else {
       const el = document.getElementById(page);
@@ -48,15 +48,15 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
           </button>
           <button 
             className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition"
-            onClick={() => handleLinkClick('features')}
+            onClick={() => handleLinkClick('stories')}
           >
-            Our Values
+            Stories
           </button>
           <button 
             className="text-sm font-medium text-gray-600 hover:text-indigo-600 transition"
             onClick={() => handleLinkClick('teachers')}
           >
-            Our Teachers
+            Teachers
           </button>
           <button 
             onClick={() => handleLinkClick('dashboard')}
@@ -68,7 +68,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 
         <div className="flex items-center space-x-3">
           <button 
-            onClick={() => onNavigate('consult')}
+            onClick={() => onNavigate('booking')}
+            className="hidden sm:block text-indigo-600 px-5 py-2.5 rounded-xl text-sm font-black hover:bg-indigo-50 transition"
+          >
+            Book a Call
+          </button>
+          <button 
+            onClick={() => onNavigate('register')}
             className="hidden sm:block bg-indigo-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-indigo-700 transition shadow-md shadow-indigo-100"
           >
             Register Student
@@ -96,11 +102,11 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl animate-in slide-in-from-top duration-300">
           <div className="flex flex-col p-6 space-y-4">
             <button onClick={() => handleLinkClick('home')} className="text-left py-2 font-semibold text-gray-700">Home</button>
-            <button onClick={() => handleLinkClick('features')} className="text-left py-2 font-semibold text-gray-700">Our Values</button>
-            <button onClick={() => handleLinkClick('teachers')} className="text-left py-2 font-semibold text-gray-700">Our Teachers</button>
+            <button onClick={() => handleLinkClick('stories')} className="text-left py-2 font-semibold text-gray-700">Success Stories</button>
             <button onClick={() => handleLinkClick('dashboard')} className="text-left py-2 font-semibold text-gray-700">Parent Login</button>
+            <button onClick={() => handleLinkClick('booking')} className="w-full border border-indigo-100 text-indigo-600 py-4 rounded-xl font-bold text-center">Book a Call</button>
             <button 
-              onClick={() => handleLinkClick('consult')}
+              onClick={() => handleLinkClick('register')}
               className="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold text-center"
             >
               Register Student

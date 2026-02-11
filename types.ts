@@ -36,3 +36,15 @@ export interface TutoringPlan {
   recommendations: string[];
   estimatedDuration: string;
 }
+
+export interface BookingSlot {
+  id: string;
+  time: string;
+  available: boolean;
+}
+
+export interface DailyAvailability {
+  date: string;
+  dayName: string;
+  slots: BookingSlot[];
+}
