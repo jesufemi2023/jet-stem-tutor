@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import ConsultationForm from './components/ConsultationForm';
-import ParentDashboard from './components/ParentDashboard';
-import TeacherProfiles from './components/TeacherProfiles';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
+import Features from './components/Features.tsx';
+import ConsultationForm from './components/ConsultationForm.tsx';
+import ParentDashboard from './components/ParentDashboard.tsx';
+import TeacherProfiles from './components/TeacherProfiles.tsx';
 
 type Page = 'home' | 'dashboard' | 'consult';
 

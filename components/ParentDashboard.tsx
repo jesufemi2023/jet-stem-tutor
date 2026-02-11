@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { GradeLevel } from '../types';
+import { GradeLevel } from '../types.ts';
 
 const ParentDashboard: React.FC = () => {
   return (

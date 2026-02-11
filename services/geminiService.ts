@@ -1,6 +1,6 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
-import { ConsultationRequest } from "../types";
+import { ConsultationRequest } from "../types.ts";
 
 export const generateStudyPlan = async (request: ConsultationRequest) => {
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });

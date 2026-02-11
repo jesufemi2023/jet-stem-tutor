@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { Subject, ConsultationRequest, TutoringPlan } from '../types';
-import { generateStudyPlan } from '../services/geminiService';
+import { Subject, ConsultationRequest, TutoringPlan } from '../types.ts';
+import { generateStudyPlan } from '../services/geminiService.ts';
 
 const ConsultationForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
