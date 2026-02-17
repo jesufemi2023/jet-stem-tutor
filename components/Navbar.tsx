@@ -48,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             </svg>
           </div>
           <span className="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-blue-600 tracking-tight">
-            STEM-Elevate
+            Jet Consults Academy
           </span>
         </div>
         

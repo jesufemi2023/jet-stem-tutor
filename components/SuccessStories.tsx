@@ -8,7 +8,7 @@ const stories = [
     subject: "Physics & Calculus",
     improvement: "C+ to A",
     image: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&w=600&q=80",
-    quote: "STEM-Elevate didn't just help me solve equations; they taught me the discipline to approach every problem with a plan. I'm now leading my school's robotics club.",
+    quote: "Jet Consults Academy didn't just help me solve equations; they taught me the discipline to approach every problem with a plan. I'm now leading my school's robotics club.",
     characterFocus: "Self-Discipline & Leadership"
   },
   {

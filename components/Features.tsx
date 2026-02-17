@@ -49,7 +49,7 @@ const Features: React.FC = () => {
     <section id="values" className="py-24 bg-gray-50/50 px-4 sm:px-6 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mb-16">
-          <h2 className="text-indigo-600 font-black tracking-widest uppercase text-xs sm:text-sm mb-4">The STEM-Elevate Identity</h2>
+          <h2 className="text-indigo-600 font-black tracking-widest uppercase text-xs sm:text-sm mb-4">The Jet Consults Academy Identity</h2>
           <h3 className="text-3xl sm:text-5xl font-black text-gray-900 leading-tight">
             Our <span className="text-indigo-600 underline decoration-indigo-100 underline-offset-4">Values</span> & Approach
           </h3>
